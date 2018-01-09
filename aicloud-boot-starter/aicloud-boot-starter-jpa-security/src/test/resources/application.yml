@@ -1,0 +1,51 @@
+server:  
+    port: 8080  
+    address: localhost  
+  
+# DATASOURCE  
+spring:
+    datasource:
+        name: springboot_security
+        url: jdbc:mysql://localhost:3306/springboot_security?characterEncoding=utf-8
+        username: root
+        password: root
+        # 使用druid数据源
+        #type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    mvc:
+        view:
+            prefix: /templates/
+            suffix: .ftl 
+    freemarker:
+        spring.freemarker.cache=false
+        spring.freemarker.charset=UTF-8
+        spring.freemarker.check-template-location=true
+        spring.freemarker.content-type=text/html
+        spring.freemarker.expose-request-attributes=true
+        spring.freemarker.expose-session-attributes=true
+        spring.freemarker.request-context-attribute=request
+# MyBatis  
+mybatis:  
+    typeAliasesPackage: com.security.entity  
+    mapperLocations: classpath:mapper/*.xml 
+     
+# securityconfig
+securityconfig:
+  logoutsuccssurl: /tosignout
+  permitall: /index
+  deniedpage: /deny
+  urlroles: /admin/** = ROLE_ADMIN;
+            /user/** = 	ROLE_USER

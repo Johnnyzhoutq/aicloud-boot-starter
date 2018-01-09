@@ -1,6 +1,0 @@
-com\aicloud\service\UserService.class
-com\aicloud\entity\User.class
-com\aicloud\service\impl\UserServiceImpl.class
-com\aicloud\controller\UserController.class
-com\aicloud\Application.class
-com\aicloud\repository\UserRepository.class

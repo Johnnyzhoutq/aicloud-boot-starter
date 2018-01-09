@@ -36,6 +36,7 @@
     	<module>aicloud-boot-starter-redisson</module>
     	<module>aicloud-eureka-server</module>
     	<module>aicloud-cloud-dependencies</module>
+    	<module>aicloud-boot-starter-jpa-security</module>
     </modules>
     <build>
         <plugins>

@@ -1,4 +1,0 @@
-com\aicloud\boot\redis\AicloudRedisObjectSerializer.class
-com\aicloud\boot\redis\boot\AicloudRedisProperties.class
-com\aicloud\boot\redis\boot\AicloudRedisAutoConfiguration.class
-com\aicloud\boot\redis\boot\AicloudRedisApplicationListener.class
