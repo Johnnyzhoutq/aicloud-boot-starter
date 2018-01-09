@@ -1,0 +1,18 @@
+server:
+    port: 9000
+# 指定kafka 代理地址，可以多个，逗号分开
+# 指定默认消费者group id
+# 指定默认topic id
+# 指定listener 容器中的线程数，用于提高并发量
+# 每次批量发送消息的数量
+spring:
+    kafka:
+        bootstrap-servers: localhost:9092
+        consumer:
+            group-id: aicloudGroup
+        template:
+            default-topic: aicloud-topic
+        listener:
+            concurrency: 3
+        producer:
+            batch-size: 1000

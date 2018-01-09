@@ -1,0 +1,4 @@
+org.springframework.context.ApplicationListener=\
+  com.aicloud.boot.redis.boot.AicloudRedisApplicationListener
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.aicloud.boot.redis.boot.AicloudRedisAutoConfiguration

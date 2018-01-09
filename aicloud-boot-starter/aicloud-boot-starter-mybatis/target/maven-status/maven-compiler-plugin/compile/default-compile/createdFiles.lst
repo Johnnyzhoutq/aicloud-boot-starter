@@ -1,0 +1,7 @@
+com\aicloud\boot\mybatis\boot\MapperLocationsApplicationListener.class
+com\aicloud\boot\mybatis\core\AbstractService.class
+com\aicloud\boot\mybatis\AicloudPageHelper.class
+com\aicloud\boot\mybatis\boot\AicloudMybatisAutoConfiguration.class
+com\aicloud\boot\mybatis\boot\AicloudMybatisProperties.class
+com\aicloud\boot\mybatis\core\BaseService.class
+com\aicloud\boot\mybatis\core\BaseMapper.class

@@ -1,0 +1,8 @@
+server:
+    port: 9000
+    context-path: /
+aicloud:
+    datasource:
+        url: jdbc:mysql://localhost:3306/aicloud-boot-test
+        username: root
+        password: root

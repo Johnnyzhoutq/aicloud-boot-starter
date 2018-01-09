@@ -1,0 +1,4 @@
+org.springframework.context.ApplicationListener=\
+  com.aicloud.boot.mybatis.boot.MapperLocationsApplicationListener
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.aicloud.boot.mybatis.boot.AicloudMybatisAutoConfiguration

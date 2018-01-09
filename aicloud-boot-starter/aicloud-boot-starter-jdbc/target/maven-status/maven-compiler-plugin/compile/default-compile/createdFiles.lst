@@ -1,0 +1,8 @@
+com\aicloud\boot\jdbc\boot\DataSourceAop.class
+com\aicloud\boot\jdbc\boot\AicloudDataSourceProperties$DetailProperties.class
+com\aicloud\boot\jdbc\boot\MultiDataSource.class
+com\aicloud\boot\jdbc\boot\DataSourceAopAutoConfiguration.class
+com\aicloud\boot\jdbc\boot\AicloudDataSourceAutoConfiguration.class
+com\aicloud\boot\jdbc\DataSource.class
+com\aicloud\boot\jdbc\boot\AicloudDataSourceProperties.class
+com\aicloud\boot\jdbc\DataSourceHolder.class

@@ -1,0 +1,7 @@
+server:
+    port: 9000
+    context-path: /
+aicloud:
+    redis:
+        host: 10.200.2.104
+        port: 6379

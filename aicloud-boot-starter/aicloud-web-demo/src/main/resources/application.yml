@@ -1,0 +1,13 @@
+server:
+    port: 9000
+    context-path: /
+aicloud:
+    datasource:
+        url: jdbc:mysql://localhost:3306/aicloud-boot-test
+        username: root
+        password: root
+    mybatis:
+        basePackage: com.aicloud.mapper
+        typeAliasesPackage: com.aicloud.entity
+        mapperLocations: classpath:mapper/**/*Mapper.xml
+        upperLimit: 6000

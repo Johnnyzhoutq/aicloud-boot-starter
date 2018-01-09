@@ -1,0 +1,7 @@
+com\aicloud\sender\MessageSender.class
+com\aicloud\sender\StringSender.class
+com\aicloud\receiver\MessageReceiver.class
+com\aicloud\entity\AicloudMessage.class
+com\aicloud\Application.class
+com\aicloud\receiver\StringReceiver.class
+com\aicloud\queue\AicloudRabbitQueueConfiguration.class

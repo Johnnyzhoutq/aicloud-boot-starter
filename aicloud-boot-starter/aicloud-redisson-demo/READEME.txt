@@ -1,0 +1,76 @@
+Redisson是一个在Redis的基础上实现的Java驻内存数据网格（In-Memory Data Grid）。
+它不仅提供了一系列的分布式的Java常用对象，还提供了许多分布式服务。其中包括(BitSet, Set, 
+Multimap, SortedSet, Map, List, Queue, BlockingQueue, Deque, 
+BlockingDeque, Semaphore, Lock, AtomicLong, CountDownLatch, 
+Publish / Subscribe, Bloom filter, Remote service, Spring cache, 
+Executor service, Live Object service, Scheduler service) 
+Redisson提供了使用Redis的最简单和最便捷的方法。Redisson的宗旨是促进使用者对Redis的关注分离
+（Separation of Concern），从而让使用者能够将精力更集中地放在处理业务逻辑上。
+
+关于Redisson项目的详细介绍可以在官方网站找到。
+
+
+分布式集合
+映射（Map）
+多值映射（Multimap）
+集（Set）
+有序集（SortedSet）
+计分排序集（ScoredSortedSet）
+字典排序集（LexSortedSet）
+列表（List）
+列队（Queue）
+双端队列（Deque）
+阻塞队列（Blocking Queue）
+有界阻塞列队（Bounded Blocking Queue）
+ 阻塞双端列队（Blocking Deque）
+阻塞公平列队（Blocking Fair Queue）
+延迟列队（Delayed Queue）
+ 优先队列（Priority Queue）
+优先双端队列（Priority Deque）
+分布式集合
+示例
+         Map
+         RMap<String, SomeObject> map = redisson.getMap("anyMap");
+         SomeObject prevObject = map.put("123", new SomeObject());
+          SomeObject currentObject = map.putIfAbsent("323", new SomeObject());
+         SomeObject obj = map.remove("123");
+         Set
+         RSet<SomeObject> set = redisson.getSet("anySet");
+         set.add(new SomeObject());
+         set.remove(new SomeObject());
+分布式锁
+可重入锁（Reentrant Lock）
+公平锁（Fair Lock）
+联锁（MultiLock）
+红锁（RedLock）
+读写锁（ReadWriteLock）
+信号量（Semaphore）
+可过期性信号量（PermitExpirableSemaphore）
+闭锁（CountDownLatch）
+示例
+         RLock lock = redisson.getLock("anyLock");
+         // 最常见的使用方法
+          lock.lock();
+         // 支持过期解锁功能 10秒钟以后自动解锁
+          // 无需调用unlock方法手动解锁
+         lock.lock(10, TimeUnit.SECONDS);
+         // 尝试加锁，最多等待100秒，上锁以后10秒自动解锁 boolean res = lock.tryLock(100, 10, TimeUnit.SECONDS); lock.unlock();
+分布式服务
+分布式远程服务（Remote Service）
+分布式实时对象（Live Object）服务
+分布式执行服务（Executor Service）
+分布式调度任务服务（Scheduler Service）
+分布式映射归纳服务（MapReduce）
+ 
+服务端（远端）实例
+RRemoteService remoteService = redisson.getRemoteService();
+SomeServiceImpl someServiceImpl = new SomeServiceImpl();
+ // 在调用远程方法以前，应该首先注册远程服务
+ // 只注册了一个服务端工作者实例，只能同时执行一个并发调用
+remoteService.register(SomeServiceInterface.class, someServiceImpl);
+ // 注册了12个服务端工作者实例，可以同时执行12个并发调用
+remoteService.register(SomeServiceInterface.class, someServiceImpl, 12);
+客户端（本地）实例
+         RRemoteService remoteService = redisson.getRemoteService();
+         SomeServiceInterface service = remoteService.get(SomeServiceInterface.class);
+         String result = service.doSomeStuff(1L, "secondParam", new AnyParam());

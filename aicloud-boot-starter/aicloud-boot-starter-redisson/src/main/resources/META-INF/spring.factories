@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.aicloud.boot.redisson.boot.AicloudRedissonAutoconfiguration

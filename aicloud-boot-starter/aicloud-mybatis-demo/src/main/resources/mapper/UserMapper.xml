@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aicloud.mapper.UserMapper">
+	<resultMap id="BasePojoMap" type="com.aicloud.entity.User">
+        <id  property="userId" column="user_id"/>
+		<result  property="name" column="name"/>
+    </resultMap>
+    <insert id="save" parameterType="com.aicloud.entity.User">
+	    insert into t_user (user_id, name)
+	    values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <select id="findAll" resultMap="BasePojoMap">
+  		select * from t_user
+  </select>
+</mapper>

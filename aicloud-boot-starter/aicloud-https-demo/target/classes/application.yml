@@ -1,0 +1,8 @@
+server:
+    port: 9000
+    context-path: /
+    ssl:
+        key-store: classpath:keystore.p12
+        key-store-password: summer
+        keyStoreType: PKCS12
+        keyAlias: tomcat
