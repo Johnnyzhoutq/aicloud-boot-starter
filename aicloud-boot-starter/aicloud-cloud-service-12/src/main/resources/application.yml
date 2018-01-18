@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: aicloud-cloud-service-1
+server:
+    port: 9012
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://peer1:9001/eureka/

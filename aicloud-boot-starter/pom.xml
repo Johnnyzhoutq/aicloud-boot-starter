@@ -8,7 +8,7 @@
   <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.0.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
     </parent>
     <description>aicloud依赖</description>
     <properties>
@@ -34,9 +34,16 @@
     	<module>aicloud-kafka-demo</module>
     	<module>aicloud-redisson-demo</module>
     	<module>aicloud-boot-starter-redisson</module>
-    	<module>aicloud-eureka-server</module>
-    	<module>aicloud-cloud-dependencies</module>
     	<module>aicloud-boot-starter-jpa-security</module>
+    	<module>aicloud-boot-starter-memcached</module>
+    	<module>aicloud-cloud-dependencies</module>
+    	<module>aicloud-cloud-eureka-A</module>
+    	<module>aicloud-cloud-eureka-B</module>
+    	<module>aicloud-cloud-service-11</module>
+    	<module>aicloud-cloud-service-12</module>
+    	<module>aicloud-cloud-service-21</module>
+    	<module>aicloud-cloud-service-22</module>
+    	<module>aicloud-cloud-gateway</module>
     </modules>
     <build>
         <plugins>

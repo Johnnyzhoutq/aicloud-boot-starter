@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: aicloud-eureka-server
+server:
+    port: 9001
+eureka:
+    instance:
+        prefer-ip-address: true
+        instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+        #delete this if only one eureka server
+        hostname: peer1
+    server:
+        #关闭自我保护机制
+        enable-self-preservation: false
+    client:
+        #do not register itself to the eureka-server
+        register-with-eureka: false
+        #是否需要去检索寻找服务，默认是true
+        fetch-registry: false
+        serviceUrl:
+            #defaultZone: http://peer2:9002/eureka/
+            defaultZone: http://peer1:9001/eureka/

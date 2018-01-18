@@ -12,6 +12,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.aicloud.common.util.publicbox.AicloudMD5Util;
 
 @Configuration
 @EnableConfigurationProperties(AicloudSecuritySettings.class)
@@ -21,7 +24,16 @@ public class AicloudWebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
     private AicloudSecuritySettings settings;
 	/**
-	 * AuthenticationManager（接口）是认证相关的核心接口，也是发起认证的出发点，因为在实际需求中，我们可能会允许用户使用用户名+密码登录，同时允许用户使用邮箱+密码，手机号码+密码登录，甚至，可能允许用户使用指纹登录（还有这样的操作？没想到吧），所以说AuthenticationManager一般不直接认证，AuthenticationManager接口的常用实现类ProviderManager 内部会维护一个List<AuthenticationProvider>列表，存放多种认证方式，实际上这是委托者模式的应用（Delegate）。也就是说，核心的认证入口始终只有一个：AuthenticationManager，不同的认证方式：用户名+密码（UsernamePasswordAuthenticationToken），邮箱+密码，手机号码+密码登录则对应了三个AuthenticationProvider。这样一来四不四就好理解多了？熟悉shiro的朋友可以把AuthenticationProvider理解成Realm。在默认策略下，只需要通过一个AuthenticationProvider的认证，即可被认为是登录成功。
+	 * AuthenticationManager（接口）是认证相关的核心接口，也是发起认证的出发点，因为在实际需求中，
+	 * 我们可能会允许用户使用用户名+密码登录，同时允许用户使用邮箱+密码，手机号码+密码登录，甚至，可能允
+	 * 许用户使用指纹登录（还有这样的操作？没想到吧），所以说AuthenticationManager一般不直接认证，
+	 * AuthenticationManager接口的常用实现类ProviderManager 内部会维护一个
+	 * List<AuthenticationProvider>列表，存放多种认证方式，实际上这是委托者模式的应用（Delegate）。
+	 * 也就是说，核心的认证入口始终只有一个：AuthenticationManager，不同的认证方式：用户名+密码
+	 * （UsernamePasswordAuthenticationToken），邮箱+密码，手机号码+密码登录则对应了三个
+	 * AuthenticationProvider。这样一来四不四就好理解多了？熟悉shiro的朋友可以把
+	 * AuthenticationProvider理解成Realm。在默认策略下，只需要通过一个AuthenticationProvider
+	 * 的认证，即可被认为是登录成功。
 	*/
 	@Autowired
     private AuthenticationManager authenticationManager;
@@ -43,8 +55,17 @@ public class AicloudWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         System.out.println("使用自定义登录接口aicloudCustomUserDetailsService 配置 AuthenticationManagerBuilder");
-    	auth.userDetailsService(aicloudCustomUserDetailsService); 
+    	auth.userDetailsService(aicloudCustomUserDetailsService).passwordEncoder(new PasswordEncoder(){
+            public String encode(CharSequence rawPassword) {
+                return AicloudMD5Util.encode((String)rawPassword);
+            }
+            //用来验证密码和加密后密码是否一致
+            public boolean matches(CharSequence rawPassword, String encodedPassword) {
+                return encodedPassword.equals(AicloudMD5Util.encode((String)rawPassword));
+            }}); 
     	//用aicloudCustomUserDetailsService 配置成默认的验证模式
+    	//当然呢也可以配置自己的验证机制,可以多次调用，内部实际上是list  的  add
+    	//auth.authenticationProvider(authenticationProvider)
     }
     
     @Override
@@ -64,6 +85,12 @@ public class AicloudWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage(settings.getDeniedpage());//异常应该跳转的页面
         logger.info("http规则配置");
         System.out.println("http规则配置");
+        
+        //也可以自定义过滤器，同时制定该过滤器的执行顺序（首先看security的过滤器连是什么鬼）
+        // 在 UsernamePasswordAuthenticationFilter 前添加 BeforeLoginFilter
+        //http.addFilterBefore(new BeforeLoginFilter(), UsernamePasswordAuthenticationFilter.class);
+        // 在 CsrfFilter 后添加 AfterCsrfFilter
+        //http.addFilterAfter(new AfterCsrfFilter(), CsrfFilter.class);
 
     }
     @Bean

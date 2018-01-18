@@ -1,0 +1,23 @@
+spring:
+    application:
+        name: aicloud-cloud-service-2
+server:
+    port: 9021
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://peer1:9001/eureka/
+            
+            
+# routes to serviceId
+zuul:
+    routes:
+        api1: 
+            path: /api1/**
+            serviceId: aicloud-cloud-service-1
+        api2: 
+            path: /api2/**
+            serviceId: aicloud-cloud-service-2
+        api11-url: 
+            path: /api11-url/**
+            url: http://localhost:9011/
