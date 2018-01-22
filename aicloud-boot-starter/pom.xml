@@ -44,6 +44,7 @@
     	<module>aicloud-cloud-service-21</module>
     	<module>aicloud-cloud-service-22</module>
     	<module>aicloud-cloud-gateway</module>
+    	<module>aicloud-cloud-configserver</module>
     </modules>
     <build>
         <plugins>

@@ -1,0 +1,20 @@
+server:
+    port: 7002
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://peer1:9001/eureka/
+spring:
+    application:
+        #应用名称
+        name: config-server
+    cloud:
+        config:
+            server:
+                git:
+                    #配置中心配置资源地址
+                    uri: https://github.com/Johnnyzhoutq/eureka-ribbon-hystrix-zuul
+                    #配置中心配置资源搜寻路径
+                    searchPaths: config-repo
+                    username: johnnyzhoutq@gmail.com
+                    password: xxxxxxxx
