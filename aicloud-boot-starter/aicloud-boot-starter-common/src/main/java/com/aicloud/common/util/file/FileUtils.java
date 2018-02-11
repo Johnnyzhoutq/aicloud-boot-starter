@@ -1,7 +1,10 @@
-/*
- * 修订记录:
- * @author 钟勋 2017-11-16 19:53 创建
- */
+/** 
+ * @Copyright (c) 2018, 周天琪 johnny_ztq@163.com.com All Rights Reserved.
+ * @PackageName:com.aicloud 
+ * @Date:2018年2月8日上午9:39:02  
+ * 
+*/
+
 package com.aicloud.common.util.file;
 
 import java.io.File;

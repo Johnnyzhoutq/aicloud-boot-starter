@@ -1,11 +1,10 @@
-/* 
- * Copyright © 2017 aicloud
- */
+/** 
+ * @Copyright (c) 2018, 周天琪 johnny_ztq@163.com.com All Rights Reserved.
+ * @PackageName:com.aicloud 
+ * @Date:2018年2月8日上午9:39:02  
+ * 
+*/
 
-/*
- * 修订记录:
- * @author aicloud 2017-08-04 13:42 创建
- */
 package com.aicloud.common.util.facade;
 
 /**

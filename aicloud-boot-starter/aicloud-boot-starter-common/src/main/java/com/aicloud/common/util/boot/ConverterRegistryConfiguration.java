@@ -1,11 +1,10 @@
-/* 
- * Copyright © 2017 aicloud
- */
+/** 
+ * @Copyright (c) 2018, 周天琪 johnny_ztq@163.com.com All Rights Reserved.
+ * @PackageName:com.aicloud 
+ * @Date:2018年2月8日上午9:39:02  
+ * 
+*/
 
-/*
- * 修订记录:
- * @author johnny
- */
 package com.aicloud.common.util.boot;
 
 import com.aicloud.common.util.money.MoneyConverters;

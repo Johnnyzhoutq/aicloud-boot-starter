@@ -1,8 +1,10 @@
+/** 
+ * @Copyright (c) 2018, 周天琪 johnny_ztq@163.com.com All Rights Reserved.
+ * @PackageName:com.aicloud 
+ * @Date:2018年2月8日上午9:39:02  
+ * 
+*/
 
-/*
- * 修订记录:
- * @author 周天琪 2017-11-21 19:50 创建
- */
 package com.aicloud.boot.jdbc;
 
 /**
