@@ -6,6 +6,9 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.loadbalancer.IRule;
+import com.netflix.loadbalancer.RandomRule;
+
 @SpringCloudApplication
 public class Application {
 	/**   
@@ -37,7 +40,6 @@ public class Application {
 	 * service-B.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule
 	 * 
 	*/
-
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
