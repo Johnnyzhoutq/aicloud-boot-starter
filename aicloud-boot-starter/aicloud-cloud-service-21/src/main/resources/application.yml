@@ -1,9 +1,28 @@
 spring:
     application:
         name: aicloud-cloud-service-2
+    profiles:
+        active: dev   #开发环境
+    boot:  
+        admin:  
+            client:  
+                prefer-ip: true # 解决windows下运行时无法识别主机名的问题  
+            url: http://localhost:10000/aicloud-monitor # 向服务端注册的地址
 server:
     port: 9021
+management:
+    security:
+        enabled: false
+endpoints:
+    actuator:
+        enabled: true
+    health:
+        sensitive: false
+    shutdown:
+        enabled: true
 eureka:
+    instance:
+        instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     client:
         serviceUrl:
-            defaultZone: http://peer1:9001/eureka/
+            defaultZone: http://user:user@peer1:9001/eureka/

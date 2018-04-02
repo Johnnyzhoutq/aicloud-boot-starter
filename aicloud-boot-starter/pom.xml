@@ -8,13 +8,16 @@
   <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
+        <version>1.5.6.RELEASE</version>
     </parent>
     <description>aicloud依赖</description>
     <properties>
         <!--设置jdk版本-->
         <java.version>1.8</java.version>
         <start-class>com.aicloud.Application</start-class>
+        <!--为了兼容admin-->
+        <spring.cloud.version>Edgware.RELEASE</spring.cloud.version>
+        <spring-boot-admin.version>1.5.7</spring-boot-admin.version>
     </properties>
     <modules>
     	<module>aicloud-boot-starter-jdbc</module>
@@ -45,7 +48,8 @@
     	<module>aicloud-cloud-service-22</module>
     	<module>aicloud-cloud-gateway</module>
     	<module>aicloud-cloud-configserver</module>
-    </modules>
+    	<module>aicloud-cloud-monitor</module>
+  </modules>
     <build>
         <plugins>
         	<plugin>

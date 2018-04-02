@@ -1,8 +1,31 @@
 spring:
     application:
         name: aicloud-eureka-server
+    boot:  
+        admin:  
+            client:  
+                prefer-ip: true # 解决windows下运行时无法识别主机名的问题  
+            url: http://localhost:10000/aicloud-monitor # 向服务端注册的地址
+           # username: admin
+           # password: admin
 server:
     port: 9002
+security:
+    basic:
+        enabled: true #开启权限验证
+    user:
+        name: user
+        password: ${REGISTRY_SERVER_PASSWORD:user}
+management:
+    security:
+        enabled: false
+endpoints:
+    actuator:
+        enabled: true
+    health:
+        sensitive: false
+    shutdown:
+        enabled: true
 eureka:
     instance:
         prefer-ip-address: false
@@ -16,4 +39,4 @@ eureka:
         #是否需要去检索寻找服务，默认是true
         fetch-registry: true
         serviceUrl:
-            defaultZone: http://peer1:9001/eureka/
+            defaultZone: http://${security.user.name}:${security.user.password}@peer1:9001/eureka/

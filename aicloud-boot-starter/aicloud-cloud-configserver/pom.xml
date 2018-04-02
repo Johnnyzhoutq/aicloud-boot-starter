@@ -22,13 +22,19 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
+		<!--spring-boot-admin监控  -->
+		<dependency>  
+		    <groupId>de.codecentric</groupId>  
+		    <artifactId>spring-boot-admin-starter-client</artifactId>  
+		    <version>${spring-boot-admin.version}</version>  
+		</dependency> 
     </dependencies>
     <dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Edgware.RELEASE</version>
+				<version>${spring.cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
