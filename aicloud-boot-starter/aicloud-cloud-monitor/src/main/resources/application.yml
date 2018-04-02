@@ -1,0 +1,43 @@
+spring:
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: zhoutianqi
+        password: zhoutianqi
+    boot:
+        admin:
+            routes:
+                endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream
+            url: http://localhost:10000/aicloud-monitor # 向服务端注册的地址
+            username: "${security.user.name}"       #These two are needed so that the client
+            password: "${security.user.password}"   #can register at the protected server api
+        client:
+            metadata:
+                user.name: "${security.user.name}"          #These two are needed so that the server
+                user.password:  "${security.user.password}" #can access the proteceted client endpoints
+server:
+    port: 10000
+#测试,不使用密码
+management:  
+    security:  
+        enabled: false # spring-boot 1.5.2之后严格执行安全策略，所以需要配置这个为false 
+endpoints:
+    health:
+        sensitive: false
+security:
+    basic:
+        enabled: false #开启原有权限验证
+    user:
+        name: admin
+        password: admin
+eureka:
+    instance:
+        hostname: peer1
+        prefer-ip-address: true
+        metadata-map:
+            user.name: ${security.user.name}
+            user.password: ${security.user.password}
+    client:
+        serviceUrl:
+            defaultZone: http://user:${REGISTRY_SERVER_PASSWORD:user}@peer1:9001/eureka/
+    
