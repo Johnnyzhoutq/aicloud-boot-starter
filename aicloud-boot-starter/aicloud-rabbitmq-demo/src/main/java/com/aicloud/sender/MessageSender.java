@@ -41,7 +41,8 @@ public class MessageSender implements RabbitTemplate.ConfirmCallback{
 		this.rabbitMessagingTemplate.convertAndSend("B", "queue.B.bind", listHost, header);
 		System.out.println("Send a customized object list message to [queue.B] by RabbitMessagingTemplate");
 	}
-
+	
+	//需要开启spring.rabbitmq.publisher-confirms=true    默认是false
 	@Override
 	public void confirm(CorrelationData correlationData, boolean ack, String cause) {
 		// TODO Auto-generated method stub

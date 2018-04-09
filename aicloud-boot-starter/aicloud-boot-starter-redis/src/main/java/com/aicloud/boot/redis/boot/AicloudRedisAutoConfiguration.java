@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -11,6 +12,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.StringUtils;
 
 import com.aicloud.boot.redis.AicloudRedisObjectSerializer;
+import com.aicloud.boot.redis.boot.AicloudRedisProperties.Cluster;
 
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -37,6 +39,10 @@ public class AicloudRedisAutoConfiguration {
 	@Bean
 	public JedisConnectionFactory jedisConnectionFactory() {
 		JedisConnectionFactory factory = new JedisConnectionFactory();
+		//集群配置直接返回
+		if (getClusterConfiguration() != null) {
+			return new JedisConnectionFactory(getClusterConfiguration(), jedisPoolConfig());
+		}
 		factory.setPoolConfig(jedisPoolConfig());
 		factory.setHostName(aicloudRedisProperties.getHost());
 		if(!StringUtils.isEmpty(aicloudRedisProperties.getPassword())){
@@ -57,4 +63,22 @@ public class AicloudRedisAutoConfiguration {
         template.setValueSerializer(new AicloudRedisObjectSerializer());
         return template;
     }
+    
+    /**
+	 * Create a {@link RedisClusterConfiguration} if necessary.
+	 * @return {@literal null} if no cluster settings are set.
+	 */
+	protected final RedisClusterConfiguration getClusterConfiguration() {
+		if (aicloudRedisProperties.getCluster() == null) {
+			return null;
+		}
+		Cluster clusterProperties = aicloudRedisProperties.getCluster();
+		RedisClusterConfiguration config = new RedisClusterConfiguration(
+				clusterProperties.getNodes());
+
+		if (clusterProperties.getMaxRedirects() != null) {
+			config.setMaxRedirects(clusterProperties.getMaxRedirects());
+		}
+		return config;
+	}
 }

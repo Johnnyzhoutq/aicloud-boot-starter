@@ -1,9 +1,15 @@
 package com.aicloud.boot.redis.boot;
 
+import java.util.List;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("aicloud.redis")
 public class AicloudRedisProperties {
+	/**
+	 *分布式
+	 * */
+	private Cluster cluster;
 	private String host;
 	private String password;
 	private int port;
@@ -85,5 +91,46 @@ public class AicloudRedisProperties {
 	public void setDatabase(int database) {
 		this.database = database;
 	}
+	public Cluster getCluster() {
+		return this.cluster;
+	}
 
+	public void setCluster(Cluster cluster) {
+		this.cluster = cluster;
+	}
+	/**
+	 * Cluster properties.
+	 */
+	public static class Cluster {
+
+		/**
+		 * Comma-separated list of "host:port" pairs to bootstrap from. This represents an
+		 * "initial" list of cluster nodes and is required to have at least one entry.
+		 */
+		private List<String> nodes;
+
+		/**
+		 * Maximum number of redirects to follow when executing commands across the
+		 * cluster.
+		 */
+		private Integer maxRedirects;
+
+		public List<String> getNodes() {
+			return this.nodes;
+		}
+
+		public void setNodes(List<String> nodes) {
+			this.nodes = nodes;
+		}
+
+		public Integer getMaxRedirects() {
+			return this.maxRedirects;
+		}
+
+		public void setMaxRedirects(Integer maxRedirects) {
+			this.maxRedirects = maxRedirects;
+		}
+
+	}
+	
 }
