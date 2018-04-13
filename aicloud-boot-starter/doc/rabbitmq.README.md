@@ -91,3 +91,21 @@ spring:
     port: 5672
     username: zhoutianqi
     password: zhoutianqi
+    
+    
+    
+    
+#或者  RabbitMQ单机，只使用addresses
+#spring:
+ # rabbitmq:
+   # addresses:ip1:port1
+  #  username: your_username
+   # password: your_password
+
+
+#//RabbitMQ集群，addresses一定要逗号分隔
+#spring:
+  #rabbitmq:
+   # addresses:ip1:port1,ip2:port2,ip3:port3
+   # username: your_username
+    #password: your_password
