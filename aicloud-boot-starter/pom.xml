@@ -49,7 +49,10 @@
     	<module>aicloud-cloud-gateway</module>
     	<module>aicloud-cloud-configserver</module>
     	<module>aicloud-cloud-monitor</module>
-  </modules>
+    	<module>aicloud-cloud-region-server1</module>
+    	<module>aicloud-cloud-region-server2</module>
+    	<module>aicloud-cloud-region-server3</module>
+    </modules>
     <build>
         <plugins>
         	<plugin>

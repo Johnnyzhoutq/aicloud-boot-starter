@@ -1,0 +1,31 @@
+#eureka server zone分区高可用
+spring:
+    application:
+        name: region-server
+server:
+    port: 9003
+eureka:
+    instance:
+        prefer-ip-address: false
+        instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+        #delete this if only one eureka server
+        hostname: peer3
+        
+    server:
+        #关闭自我保护机制
+        enable-self-preservation: false
+    client:
+        #do not register itself to the eureka-server
+        register-with-eureka: true
+        #是否需要去检索寻找服务，默认是true
+        fetch-registry: true
+        #当前zone优先注册
+        prefer-same-zone-eureka: true
+        #地区
+        region: shanghai
+        availability-zones:
+            shanghai: zone-1,zone-2,zone-3
+        service-url:
+            zone-1: http://peer1:9001/eureka/
+            zone-2: http://peer2:9002/eureka/
+            zone-3: http://peer3:9003/eureka/
