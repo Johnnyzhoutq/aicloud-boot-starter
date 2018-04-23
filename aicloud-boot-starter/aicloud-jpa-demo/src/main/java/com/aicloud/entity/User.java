@@ -10,14 +10,14 @@ import javax.persistence.Table;
 @Table(name = "t_user")
 public class User {
 	@Id
-	@GeneratedValue
-	private Integer userId;
+	@Column(length=64)
+	private Long userId;
 	@Column(length=50)
 	private String name;
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public String getName() {
