@@ -9,4 +9,6 @@ email: johnny_ztq@163.com
 
 ![][1]
 
-（出处：https://github.com/codingmiao/ngineureka/blob/master/linuxcfg.md）
+出处：https://github.com/codingmiao/ngineureka/blob/master/linuxcfg.md
+
+  [1]: http://7xlvcv.com1.z0.glb.clouddn.com/01bbc543-059f-4f2a-8364-dd95a7505deb
