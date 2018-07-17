@@ -1,0 +1,17 @@
+eureka:
+  instance:
+    prefer-ip-address: false
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serviceUrl:
+      securityAuth: user:user
+      httpUrl: http://peer1:9001/eureka/
+      defaultZone: http://user:user@peer1:9001/eureka/
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 9999
+  context-path: /ngineureka
+spring:
+  application:
+    name: ngineureka

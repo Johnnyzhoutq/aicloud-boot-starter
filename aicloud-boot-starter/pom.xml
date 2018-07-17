@@ -52,6 +52,7 @@
     	<module>aicloud-cloud-region-server1</module>
     	<module>aicloud-cloud-region-server2</module>
     	<module>aicloud-cloud-region-server3</module>
+    	<module>aicloud-cloud-nginxeureka</module>
     </modules>
     <build>
         <plugins>

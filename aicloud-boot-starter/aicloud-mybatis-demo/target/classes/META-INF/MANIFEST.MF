@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: aicloud-mybatis-demo
 Implementation-Version: 1.0-SNAPSHOT
-Built-By: Administrator
+Built-By: 092
 Implementation-Vendor-Id: com.aicloud
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_171
 Implementation-URL: http://projects.spring.io/spring-boot/aicloud-boot
  -starter/aicloud-mybatis-demo/
 Created-By: Maven Integration for Eclipse
